@@ -45,3 +45,8 @@ group :development do
   gem 'spring'
 end
 
+# Facebok login
+gem 'therubyracer'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'

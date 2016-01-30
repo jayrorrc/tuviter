@@ -50,3 +50,6 @@ gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+# ForeingnKey
+gem 'foreigner'

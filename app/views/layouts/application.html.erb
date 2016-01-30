@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tuviter</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <title>Tuviter</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <%= javascript_include_tag 'init' %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+    
+    <div class="navbar-fixed">
+        <ul id="options" class="dropdown-content">
+            <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+        </ul>
+        <nav class="blue-grey">
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo center">Logo</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <% if user_signed_in? %>
+                        <li><a class="dropdown-button" href="#!" data-activates="options"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+                    <% else %>
+                        <li><%= link_to "Sign up", new_user_registration_path %></li>
+                        <li><%= link_to "Login", new_user_session_path %></li>
+                    <% end %>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">  
+                    <% if user_signed_in? %>
+                        <li><a class="dropdown-button" href="#!" data-activates="options"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+                    <% else %>
+                        <li><%= link_to "Sign up", new_user_registration_path %></li>
+                        <li><%= link_to "Login", new_user_session_path %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    <%= yield %>
 
 </body>
 </html>

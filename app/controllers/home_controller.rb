@@ -1,19 +1,10 @@
 class HomeController < ApplicationController
     def show
         if user_signed_in?
-            @posts = []
-            
-            # All relationship of current user
-            friends = Friendship.where(:user_id => current_user.id)
-            friends.each do |friend|
-            
-                # All posts to every friend of currente user
-                friends_posts = Post.where(:user_id => friend.friend_id)
-                friends_posts.each do |post|
-                    @posts << post
-                end
-                
-            end
+            @posts = Post.where('posts.user_id in
+                                    (select friend_id
+                                        from friendships as f, users as u
+                                        where u.id = f.user_id and u.id = ?)', current_user.id)
         else
             @posts = Post.all
         end

@@ -14,13 +14,21 @@
 <body>
     
     <div class="navbar-fixed">
-        <ul id="options" class="dropdown-content">
-            <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+        <ul id="user-options" class="dropdown-content">
+            <li><%= link_to "Edit profile", edit_user_registration_path %></li>
             <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
         </ul>
-        <ul id="options-side" class="dropdown-content">
-            <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+        <ul id="user-options-side" class="dropdown-content">
+            <li><%= link_to "Edit profile", edit_user_registration_path %></li>
             <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+        </ul>
+        <ul id="post-options" class="dropdown-content">
+            <li><%= link_to "New Post", post_new_path %></li>
+            <li><%= link_to "My Posts", post_all_path %></li>
+        </ul>
+        <ul id="post-options-side" class="dropdown-content">
+            <li><%= link_to "New Post", post_new_path %></li>
+            <li><%= link_to "My Posts", post_all_path %></li>
         </ul>
         <nav class="blue-grey">
             <div class="nav-wrapper">
@@ -28,7 +36,8 @@
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <% if user_signed_in? %>
-                        <li><a class="dropdown-button" href="#!" data-activates="options-side"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button" href="#!" data-activates="post-options">Post<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button" href="#!" data-activates="user-options"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
                     <% else %>
                         <li><%= link_to "Sign up", new_user_registration_path %></li>
                         <li><%= link_to "Login", new_user_session_path %></li>
@@ -36,7 +45,8 @@
                 </ul>
                 <ul class="side-nav" id="mobile-demo">  
                     <% if user_signed_in? %>
-                        <li><a class="dropdown-button" href="#!" data-activates="options"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button" href="#!" data-activates="user-options-side"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button" href="#!" data-activates="post-options-side">Post<i class="material-icons right">arrow_drop_down</i></a></li>
                     <% else %>
                         <li><%= link_to "Sign up", new_user_registration_path %></li>
                         <li><%= link_to "Login", new_user_session_path %></li>
@@ -49,7 +59,9 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
-    <%= yield %>
+    <div class="content">
+        <%= yield %>
+    </div>
 
 </body>
 </html>

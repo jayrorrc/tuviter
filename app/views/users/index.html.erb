@@ -11,12 +11,19 @@
                         </p>
                     </div>
                     <div class="card-action">
-                        <% friendship = Friendship.where(:user_id => current_user.id, :friend_id => user.id) %>
-                        <% if friendship.empty? %>
-                            <%= link_to "Follow", follow_path(user) %>
-                        <% else %>
-                            <%= link_to "Unfollow", unfollow_path(friendship.first) %>
-                        <% end %>
+                        <div class="row">
+                            <div class="col">
+                                <% friendship = Friendship.where(:user_id => current_user.id, :friend_id => user.id) %>
+                                <% if friendship.empty? %>
+                                    <%= link_to "Follow", follow_path(user) %>
+                                <% else %>
+                                    <%= link_to "Unfollow", unfollow_path(friendship.first) %>
+                                <% end %>
+                            </div>
+                            <div class="col rignt">
+                                <%= link_to "Show", user_perfil_path(user) %>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

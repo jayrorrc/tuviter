@@ -53,3 +53,7 @@ gem 'omniauth-facebook'
 
 # ForeingnKey
 gem 'foreigner'
+
+# Rspec
+gem 'rspec-rails'
+

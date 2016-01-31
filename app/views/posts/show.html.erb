@@ -1,12 +1,22 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="row">
+    <div class="col s12">
+        <div class="card blue-grey lighten-5">
+            <div class="card-content black-text">
+                <span class="card-title"><%= @post.title %></span>
+                <p>
+                  <%= @post.description %>
+                </p>
+            </div>
+            <div class="card-action">
+                <div class="row">
+                    <div class="col">
+                        <%= link_to 'Edit', edit_post_path(@post) %>
+                    </div>
+                    <div class="col right">
+                        <%= link_to 'Back', posts_path %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

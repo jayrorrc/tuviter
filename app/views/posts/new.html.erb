@@ -1,5 +1,19 @@
-<h1>New Post</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', posts_path %>
+<div class="row">
+    <div class="col s11">
+        <div class="card blue-grey lighten-5">
+            <div class="card-content black-text">
+                <span class="card-title">New Post</h1>
+                <%= render 'form' %>
+            </div>
+        </div>
+    </div>
+    <div class="col s1">
+        <div class="col s1 m1 bottom">
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <a class="btn-floating btn-large waves-effect waves-light blue-grey darken-4"  href="<%= posts_path %>">
+                    <i class="material-icons">keyboard_return</i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>   

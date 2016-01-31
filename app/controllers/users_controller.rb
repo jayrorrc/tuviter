@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     def index
         @users = User.all
-        @friendship = Friendship.all
     end
 
     def show

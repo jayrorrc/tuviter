@@ -3,8 +3,10 @@ Rails.application.routes.draw do
     devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
 
     resources :posts
-    get '/posts/new', to: 'patients#new', as: 'post_new'
-    get '/posts', to: 'patients#index', as: 'post_all'
+    get '/posts/new', to: 'posts#new', as: 'post_new'
+    get '/posts', to: 'posts#index', as: 'post_all'
+    
+    get '/perfil/:id', to: 'users#perfil', as: 'perfil'
 
     root 'home#show'
 end

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action  :authenticate_user!, :set_post, only: [:show, :edit, :update, :destroy]
 
     # GET /posts
     # GET /posts.json
@@ -23,6 +23,11 @@ class PostsController < ApplicationController
 
     # GET /posts/1/edit
     def edit
+        @post = Post.find(params[:id])
+        if @post.user_id != current_user.id
+            flash[:notice] = "You can not do this!!!"
+            redirect_to root_path
+        end
     end
 
     # POST /posts

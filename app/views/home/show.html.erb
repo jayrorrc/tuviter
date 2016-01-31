@@ -1,9 +1,10 @@
 <div class="row">
     <% @posts.each do |post| %>
+        <% user = User.find(post.user_id) %>
         <div class="col s6">
             <div class="card blue-grey lighten-5">
                 <div class="card-content black-text">
-                    <span class="card-title"><%= post.title %></span>
+                    <span class="card-title"><%= user.name %>: <%= post.title %></span>
                     <p>
                         <strong>Description:</strong>
                         <%= post.description %>

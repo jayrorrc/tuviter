@@ -19,8 +19,6 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1.json
     def destroy
         @friendship = Friendship.find(params[:id])
-        print "[EITA]"
-        print @friendship
         @friendship.destroy
         
         flash[:notice] = "Removed friendship."

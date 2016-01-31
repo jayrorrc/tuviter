@@ -1,2 +1,25 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+<div class="row">
+    <% @posts.each do |post| %>
+        <div class="col s6">
+            <div class="card blue-grey lighten-5">
+                <div class="card-content black-text">
+                    <span class="card-title"><%= post.title %></span>
+                    <p>
+                        <strong>Description:</strong>
+                        <%= post.description %>
+                    </p>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col">
+                            <%= link_to 'Edit', edit_post_path(post) %>
+                        </div>
+                        <div class="col right">
+                            <%= link_to 'Show', post %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

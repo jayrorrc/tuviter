@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get '/posts/new', to: 'posts#new', as: 'post_new'
     get '/posts', to: 'posts#index', as: 'post_all'
     
-    get '/perfil/:id', to: 'users#perfil', as: 'perfil'
+    resources :users
+    get '/perfil/:id', to: 'users#show', as: 'user_perfil'
+    get '/perfil/edit/:id', to: 'users#edit', as: 'user_edit'
 
     root 'home#show'
 end

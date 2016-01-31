@@ -16,12 +16,12 @@
     <div class="navbar-fixed">
         <% if user_signed_in? %>
             <ul id="user-options" class="dropdown-content">
-                <li><%= link_to "Perfil", perfil_path(current_user) %></li>
+                <li><%= link_to "Perfil", user_perfil_path(current_user) %></li>
                 <li><%= link_to "Account Settings", edit_user_registration_path %></li>
                 <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
             </ul>
             <ul id="user-options-side" class="dropdown-content">
-                <li><%= link_to "Perfil", perfil_path(current_user) %></li>
+                <li><%= link_to "Perfil", user_perfil_path(current_user) %></li>
                 <li><%= link_to "Account Settings", edit_user_registration_path %></li>
                 <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
             </ul>

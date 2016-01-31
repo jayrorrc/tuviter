@@ -8,6 +8,9 @@
                     <%= @user.email %>
                 </p>
             </div>
+            <div class="card-action">
+                <%= link_to "Edit", user_edit_path(@user) %>
+            </div>
         </div>
     </div>
 </div>
@@ -21,18 +24,18 @@
                         <strong>Description:</strong>
                         <%= post.description %>
                     </p>
-                    <div class="card-action">
-                        <div class="row">
-                            <div class="col">
-                                <%= link_to 'Edit', edit_post_path(post) %>
-                            </div>
-                            <div class="col right">
-                                <%= link_to 'Show', post %>
-                            </div>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col">
+                            <%= link_to 'Edit', edit_post_path(post) %>
+                        </div>
+                        <div class="col right">
+                            <%= link_to 'Show', post %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <% end %>    
+    <% end %>
 </div>

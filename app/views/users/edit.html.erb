@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col s12 m6">
+        <div class="card blue-grey lighten-5">
+            <div class="card-content black-text">
+                <%= form_for (@user) do |f| %>
+                    <span class="card-title">Edit <%= @user.name%></span>
+
+                    <div class = "field">
+                        <%= f.label 'Nome'%>
+                        <%= f.text_field :name%>
+                    </div>
+
+                    <div class="card-action">
+                        <div class="row">
+                            <div class="col">
+                                <%= link_to "Account Settings", edit_user_registration_path %>
+                            </div>
+                            <div class="col rignt">
+                                <button class="btn waves-effect waves-light right" type="submit" name="action">
+                                    <%= f.submit "Update" %>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+	</div>
+</div>

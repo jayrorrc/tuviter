@@ -1,41 +1,64 @@
 <div class="row">
-    <div class="col s12">
-        <div class="card blue-grey lighten-4">
-            <div class="card-content black-text">
-                <span class="card-title"><%= @user.name %></span>
-                <p>
-                    <strong>Email:</strong>
-                    <%= @user.email %>
-                </p>
-            </div>
-            <div class="card-action">
-                <%= link_to "Edit", user_edit_path(@user) %>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <% @my_posts.each do |post| %>
-        <div class="col s6">
-            <div class="card blue-grey lighten-5">
-                <div class="card-content black-text">
-                    <span class="card-title"><%= post.title %></span>
-                    <p>
-                        <strong>Description:</strong>
-                        <%= post.description %>
-                    </p>
-                </div>
-                <div class="card-action">
-                    <div class="row">
-                        <div class="col">
-                            <%= link_to 'Edit', edit_post_path(post) %>
-                        </div>
-                        <div class="col right">
-                            <%= link_to 'Show', post %>
-                        </div>
+    <div class="col s8">
+        <div class="row">
+            <div class="col s12">
+                <div class="card blue-grey lighten-3">
+                    <div class="card-content black-text">
+                        <span class="card-title"><%= @user.name %></span>
+                        <p>
+                            <strong>Email:</strong>
+                            <%= @user.email %>
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <%= link_to "Edit", user_edit_path(@user) %>
                     </div>
                 </div>
             </div>
         </div>
-    <% end %>
+        <div class="row">
+            <% @my_posts.each do |post| %>
+                <div class="col s6">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content black-text">
+                            <span class="card-title"><%= post.title %></span>
+                            <p>
+                                <strong>Description:</strong>
+                                <%= post.description %>
+                            </p>
+                        </div>
+                        <div class="card-action">
+                            <div class="row">
+                                <div class="col">
+                                    <%= link_to 'Edit', edit_post_path(post) %>
+                                </div>
+                                <div class="col right">
+                                    <%= link_to 'Show', post %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="col s4">
+        <% @my_friends.each do |friend| %>
+            <div class="row">
+                <div class="card blue-grey lighten-4">
+                    <div class="card-content black-text">
+                        <span class="card-title"><%= friend.name %></span>
+                        <p>
+                            <strong>Email:</strong>
+                            <%= friend.email %>
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <% friendship = Friendship.where(:user_id => current_user.id, :friend_id => friend.id).first %>
+                        <%= link_to "Unfollow", unfollow_path(friendship) %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>

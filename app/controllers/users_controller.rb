@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
+    def index
+        @users = User.all
+        @friendship = Friendship.all
+    end
+
     def show
         @user = User.find(params[:id])
         @my_posts = @user.posts
+        @my_friends = @user.friends
     end
 
     def edit

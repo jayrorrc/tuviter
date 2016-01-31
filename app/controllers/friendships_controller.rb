@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
     def create
-        @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+        @friendship = current_user.friendships.build(:friend_id => params[:id])
         
         if @friendship.save
             flash[:notice] = "Added friend."
@@ -18,10 +18,17 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
     def destroy
-        @friendship = current_user.friendships.find(params[:id])
+        @friendship = Friendship.find(params[:id])
+        print "[EITA]"
+        print @friendship
         @friendship.destroy
         
         flash[:notice] = "Removed friendship."
         redirect_to root_path
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_friendship
+        @friendship = Friendship.find(params[:id])
     end
 end
